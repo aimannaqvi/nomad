@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <!-- Vintage paper background with subtle texture -->
+  <defs>
+    <pattern id="paper-pattern" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="scale(0.5)">
+      <rect width="100%" height="100%" fill="#e6dac4"/>
+      <g fill="#d4c5a9" opacity="0.3">
+        <rect x="10" y="10" width="5" height="5" />
+        <rect x="30" y="40" width="4" height="4" />
+        <rect x="70" y="25" width="6" height="6" />
+        <rect x="45" y="70" width="5" height="5" />
+        <rect x="90" y="60" width="3" height="3" />
+        <rect x="20" y="80" width="4" height="4" />
+        <rect x="60" y="95" width="5" height="5" />
+      </g>
+    </pattern>
+    <pattern id="noise-pattern" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="scale(0.5)">
+      <rect width="100%" height="100%" fill="none"/>
+      <g fill="#662b2c" opacity="0.05">
+        <rect x="5" y="15" width="3" height="3" />
+        <rect x="25" y="35" width="2" height="2" />
+        <rect x="55" y="10" width="4" height="4" />
+        <rect x="80" y="45" width="3" height="3" />
+        <rect x="40" y="60" width="2" height="2" />
+        <rect x="15" y="75" width="3" height="3" />
+        <rect x="65" y="85" width="2" height="2" />
+      </g>
+    </pattern>
+  </defs>
+  
+  <!-- Background circle with border -->
+  <circle cx="50" cy="50" r="48" fill="url(#paper-pattern)" stroke="#d4aa37" stroke-width="2"/>
+  
+  <!-- Overlay texture -->
+  <circle cx="50" cy="50" r="48" fill="url(#noise-pattern)"/>
+  
+  <!-- Person silhouette -->
+  <g fill="#662b2c">
+    <!-- Head -->
+    <circle cx="50" cy="40" r="15"/>
+    
+    <!-- Body -->
+    <path d="M50,55 C35,55 25,65 20,85 L80,85 C75,65 65,55 50,55 Z"/>
+  </g>
+  
+  <!-- Decorative compass elements -->
+  <g stroke="#d4aa37" stroke-width="1" fill="none" opacity="0.5">
+    <circle cx="50" cy="50" r="40" />
+    <line x1="10" y1="50" x2="90" y2="50" />
+    <line x1="50" y1="10" x2="50" y2="90" />
+    <line x1="20" y1="20" x2="80" y2="80" />
+    <line x1="20" y1="80" x2="80" y2="20" />
+  </g>
+</svg> 

@@ -1,0 +1,11 @@
+{
+  "appId": "com.vintagetraveljournal.app",
+  "appName": "Vintage Travel Journal",
+  "webDir": "out",
+  "server": {
+    "androidScheme": "https",
+    "hostname": "192.168.1.4",
+    "url": "http://192.168.1.4:3000",
+    "cleartext": true
+  }
+} 

@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Vintage Travel Journal",
+    "slug": "vintage-travel-journal",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/favicon.ico",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./public/images/paper-texture.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F7F4E9"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/favicon.ico",
+        "backgroundColor": "#F7F4E9"
+      }
+    },
+    "web": {
+      "favicon": "./public/favicon.ico"
+    }
+  }
+} 

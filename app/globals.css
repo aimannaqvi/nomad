@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom page-level transitions */
+@layer components {
+  .shadow-vintage {
+    @apply shadow-md transition-shadow duration-300;
+  }
+  
+  .shadow-vintage-hover {
+    @apply shadow-lg transition-shadow duration-300;
+  }
+}
+
+@layer base {
+  :root {
+    --foreground-rgb: 44, 44, 42; /* ink color */
+    --background-rgb: 230, 218, 196; /* deeper aged paper color - more tan */
+    --paper: 235, 225, 205; /* aged paper */
+    --cream: 240, 232, 215; /* warmer cream */
+    --ink: 41, 37, 36;
+    --sepia: 163, 92, 54;
+    --sepia-light: 211, 180, 148;
+    --sepia-dark: 129, 78, 40;
+    --burgundy: 102, 27, 44; /* rich burgundy/velvet */
+    --burgundy-light: 142, 51, 68; /* lighter burgundy */
+    --burgundy-dark: 77, 18, 32; /* darker burgundy */
+    --gold: 212, 175, 55; /* gold accent */
+    --gold-light: 240, 219, 125; /* lighter gold */
+  }
+  
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-rgb));
+    background-image: url('/images/paper-texture.png');
+    background-repeat: repeat;
+    background-blend-mode: multiply;
+    @apply font-hand;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-title text-[rgb(var(--burgundy))] leading-tight;
+  }
+  
+  /* All paragraphs and general text */
+  p, span, div, a, button, input, textarea, select, label {
+    @apply font-hand;
+  }
+  
+  /* Add texture overlay to the entire app */
+  #__next::before,
+  .next-root::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('/images/paper-texture.png');
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: multiply;
+  }
+}
+
+/* For inputs, buttons, etc. */
+@layer components {
+  .input-vintage {
+    @apply border-2 border-ink/20 bg-cream rounded-md focus:border-sepia focus:ring-1 focus:ring-sepia focus:outline-none transition-colors;
+  }
+  
+  .btn-primary {
+    @apply px-4 py-2 bg-[rgb(var(--burgundy))] text-[rgb(var(--gold-light))] rounded-md hover:bg-[rgb(var(--burgundy-dark))] transition-colors border-2 border-[rgb(var(--gold))]/40 font-display shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-paper border-2 border-[rgb(var(--burgundy))]/20 text-[rgb(var(--burgundy))] rounded-md hover:bg-cream transition-colors font-display;
+  }
+  
+  .vintage-card {
+    @apply bg-[rgb(var(--burgundy))] text-[rgb(var(--gold-light))] rounded-lg overflow-hidden border-2 border-[rgb(var(--gold))]/40
+      shadow-lg hover:shadow-xl transition-all p-4 relative;
+    background-image: 
+      linear-gradient(45deg, rgba(var(--gold), 0.05) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(var(--gold), 0.05) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(var(--gold), 0.05) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(var(--gold), 0.05) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  
+  .vintage-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 4px solid transparent;
+    border-radius: 0.5rem;
+    background: linear-gradient(45deg, rgba(var(--gold), 0.2), rgba(var(--gold), 0.1)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .vintage-button {
+    @apply flex items-center justify-center bg-[rgb(var(--burgundy))] text-[rgb(var(--gold-light))] rounded-md px-4 py-2 
+           border-2 border-[rgb(var(--gold))]/50 font-display text-base shadow-lg 
+           hover:bg-[rgb(var(--burgundy-dark))] transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-[rgb(var(--gold))] focus:ring-opacity-50
+           hover:scale-[1.03] active:scale-[0.98];
+  }
+  
+  .photo-frame {
+    @apply border-2 border-[rgb(var(--gold))]/40 rounded-md relative overflow-hidden
+      after:content-[''] after:absolute after:inset-0 
+      after:shadow-[inset_0_0_10px_rgba(0,0,0,0.1)];
+  }
+  
+  .postmark {
+    @apply inline-block px-3 py-1 bg-[rgb(var(--burgundy))]/20 text-[rgb(var(--burgundy-dark))] 
+      rounded-full text-xs font-hand transform -rotate-2 border border-[rgb(var(--burgundy))]/30;
+  }
+  
+  /* New styles for vintage elements */
+  .vintage-divider {
+    @apply w-full h-[1px] bg-[rgb(var(--gold))]/30 my-6 relative;
+  }
+  
+  .vintage-divider::before {
+    content: '✦';
+    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-paper px-4 text-[rgb(var(--gold))];
+  }
+  
+  .vintage-paper {
+    @apply bg-paper relative border-2 border-[rgb(var(--burgundy))]/20 rounded-md p-6 shadow-vintage;
+    background-image: url('/images/paper-texture.png');
+    background-blend-mode: multiply;
+  }
+  
+  .vintage-label {
+    @apply block text-sm font-display mb-1 text-[rgb(var(--burgundy))];
+  }
+  
+  .vintage-tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-display bg-[rgb(var(--burgundy))]/10 text-[rgb(var(--burgundy))] border border-[rgb(var(--burgundy))]/20;
+  }
+  
+  /* Vintage journal styles for cards */
+  .journal-card {
+    @apply bg-[rgb(var(--burgundy))] text-[rgb(var(--gold-light))] rounded-lg overflow-hidden 
+      border-[rgb(var(--gold))]/70 border-2 p-5 relative shadow-lg;
+    background-image: 
+      repeating-linear-gradient(45deg, 
+        rgba(var(--gold), 0.05) 0px, 
+        rgba(var(--gold), 0.05) 1px, 
+        transparent 1px, 
+        transparent 8px
+      );
+  }
+  
+  .journal-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 10px;
+    background: rgba(var(--gold), 0.3);
+    border-radius: 0 0 10px 10px;
+  }
+  
+  .journal-spine {
+    @apply absolute left-0 top-0 bottom-0 w-2.5 bg-[rgb(var(--gold))]/70;
+  }
+  
+  /* Animations */
+  .fade-in {
+    @apply opacity-0 animate-[fadeIn_0.5s_ease-in_forwards];
+  }
+  
+  .slide-up {
+    @apply opacity-0 translate-y-4 animate-[slideUp_0.5s_ease-out_forwards];
+  }
+  
+  .slide-in-right {
+    @apply opacity-0 translate-x-4 animate-[slideInRight_0.4s_ease-out_forwards];
+  }
+  
+  .rotate-hover {
+    @apply transition-transform duration-300 hover:rotate-1;
+  }
+  
+  .stamp {
+    @apply inline-block px-3 py-1 font-display uppercase text-xs font-bold bg-[rgb(var(--burgundy))] text-[rgb(var(--gold-light))] rounded-sm transform rotate-[-6deg] shadow-sm;
+  }
+  
+  .ink-splatter {
+    position: relative;
+  }
+  
+  .ink-splatter::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url('/images/ink-splatter.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: -1;
+  }
+  
+  .handwritten {
+    @apply font-hand text-lg text-[rgb(var(--burgundy-dark))];
+  }
+  
+  /* Gold embossed text */
+  .gold-embossed {
+    @apply font-display text-[rgb(var(--gold))] relative;
+    text-shadow: 
+      0 1px 0 rgba(var(--gold-light), 0.5),
+      0 -1px 0 rgba(0, 0, 0, 0.4),
+      1px 0 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Custom scrollbar for a vintage feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--paper));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--burgundy));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--burgundy-dark));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  0% { transform: translateX(20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+/* 3D transformation for form transition */
+.rotate-y-90 {
+  transform: rotateY(90deg);
+}
+
+/* Creating torn paper effect */
+.torn-paper-top {
+  position: relative;
+  padding-top: 20px;
+}
+
+.torn-paper-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: url('/images/torn-paper-top.svg');
+  background-size: 100% 100%;
+}
+
+.torn-paper-bottom {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.torn-paper-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: url('/images/torn-paper-bottom.svg');
+  background-size: 100% 100%;
+}
+
+@layer utilities {
+  .photo-frame {
+    @apply border-2 border-[rgb(var(--gold))]/40 p-1 bg-cream shadow-vintage;
+  }
+  
+  .antique-filter {
+    filter: sepia(40%) brightness(85%) contrast(80%);
+  }
+  
+  .paper-texture {
+    background-image: url('/images/paper-texture.png');
+    background-repeat: repeat;
+  }
+  
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+  }
+
+  .gold-border {
+    background-image: linear-gradient(to right, 
+      rgba(var(--gold), 0.8), 
+      rgba(var(--gold-light), 0.5) 30%, 
+      rgba(var(--gold), 0.8) 70%, 
+      rgba(var(--gold-light), 0.5));
+  }
+} 

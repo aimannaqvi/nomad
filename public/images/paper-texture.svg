@@ -1,0 +1,48 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base paper color -->
+  <rect width="100%" height="100%" fill="#F7F4E9" />
+  
+  <!-- Subtle grain pattern -->
+  <filter id="noise" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch" />
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0" />
+    <feBlend mode="multiply" in="SourceGraphic" />
+  </filter>
+  
+  <!-- Apply grain to background -->
+  <rect width="100%" height="100%" filter="url(#noise)" opacity="0.8" />
+  
+  <!-- Slightly visible fibers -->
+  <g opacity="0.05">
+    <!-- Horizontal fibers -->
+    <line x1="0" y1="50" x2="600" y2="50" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="0" y1="150" x2="600" y2="150" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="0" y1="250" x2="600" y2="250" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="0" y1="350" x2="600" y2="350" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="0" y1="450" x2="600" y2="450" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="0" y1="550" x2="600" y2="550" stroke="#856C4D" stroke-width="0.5" />
+    
+    <!-- Vertical fibers -->
+    <line x1="50" y1="0" x2="50" y2="600" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="150" y1="0" x2="150" y2="600" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="250" y1="0" x2="250" y2="600" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="350" y1="0" x2="350" y2="600" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="450" y1="0" x2="450" y2="600" stroke="#856C4D" stroke-width="0.5" />
+    <line x1="550" y1="0" x2="550" y2="600" stroke="#856C4D" stroke-width="0.5" />
+  </g>
+  
+  <!-- Small stains and aging spots -->
+  <g opacity="0.1">
+    <circle cx="120" cy="180" r="30" fill="#A67C52" />
+    <circle cx="450" cy="350" r="20" fill="#A67C52" />
+    <circle cx="200" cy="480" r="15" fill="#A67C52" />
+    <circle cx="500" cy="120" r="25" fill="#A67C52" />
+    <circle cx="300" cy="250" r="10" fill="#A67C52" />
+  </g>
+  
+  <!-- Slight color variations to edges -->
+  <rect x="0" y="0" width="600" height="20" fill="#E5DBC7" opacity="0.2" />
+  <rect x="0" y="580" width="600" height="20" fill="#D4C2A8" opacity="0.2" />
+  <rect x="0" y="0" width="20" height="600" fill="#E5DBC7" opacity="0.2" />
+  <rect x="580" y="0" width="20" height="600" fill="#D4C2A8" opacity="0.2" />
+</svg> 

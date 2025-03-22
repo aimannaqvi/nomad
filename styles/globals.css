@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .vintage-button {
+    @apply px-4 py-2 bg-sepia text-ink border border-ink/40 rounded shadow hover:bg-sepia-dark transition-all duration-300 font-display tracking-wide;
+  }
+  
+  .vintage-card {
+    @apply bg-paper border border-ink/20 rounded-sm shadow-md p-4 transform transition-all hover:shadow-lg;
+  }
+  
+  .vintage-input {
+    @apply bg-paper border-b border-ink/40 px-3 py-2 focus:border-ink focus:outline-none;
+  }
+  
+  .postmark {
+    @apply bg-stampRed text-paper rounded-full px-4 py-1 inline-block transform -rotate-12 uppercase text-xs font-bold tracking-wider;
+  }
+  
+  .photo-frame {
+    @apply p-2 bg-paper border-2 border-ink/20 shadow-md;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+} 
